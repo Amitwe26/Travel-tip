@@ -1,15 +1,23 @@
 
-import {locationService} from './services/location-service.js'
-
+import { locationService } from './services/location-service.js'
 
 console.log('locationService', locationService);
 
+
+var myLatlng = { lat: 32.0749831, lng: 34.9120554 };
+
 var gGoogleMap;
+
 
 window.onload = () => {
     initMap()
         .then(() => {
-            addMarker({ lat: 32.0749831, lng: 34.9120554 });
+            addMarker(myLatlng);
+        })
+        .then(() => {
+            gGoogleMap.addListener("click", (ev) => {
+                onMapClick(ev)
+            });
         })
         .catch(console.log('INIT MAP ERROR'));
 
@@ -25,6 +33,7 @@ window.onload = () => {
         console.log('Aha!', ev.target);
         panTo(35.6895, 139.6917);
     })
+
 }
 
 
@@ -66,7 +75,7 @@ function getUserPosition() {
 
 function _connectGoogleApi() {
     if (window.google) return Promise.resolve()
-    const API_KEY = ''; //TODO: Enter your API Key
+    const API_KEY = 'AIzaSyCKuaufnbpG6KWdX28y4gBz43wMxdjEa54'; //TODO: Enter your API Key
     var elGoogleApi = document.createElement('script');
     elGoogleApi.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}`;
     elGoogleApi.async = true;
@@ -76,6 +85,26 @@ function _connectGoogleApi() {
         elGoogleApi.onload = resolve;
         elGoogleApi.onerror = () => reject('Google script failed to load')
     })
+}
+
+function onMapClick(ev) {
+    // let infoWindow = new google.maps.InfoWindow({
+    //     content: "Click the map to get Lat/Lng!",
+    //     position: myLatlng,
+    // });
+    // infoWindow.open(map);
+    // // Close the current InfoWindow.
+    // infoWindow.close();
+    // // Create a new InfoWindow.
+    // infoWindow = new google.maps.InfoWindow({
+    //     position: ev.latLng,
+    // });
+    // infoWindow.setContent(
+    //     JSON.stringify(ev.latLng.toJSON(), null, 2)
+    // );
+    // infoWindow.open(map);
+    console.log(ev);
+    console.log('here', ev.latLng.lat[Scopes]);
 }
 
 
