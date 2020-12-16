@@ -88,23 +88,12 @@ function _connectGoogleApi() {
 }
 
 function onMapClick(ev) {
-    // let infoWindow = new google.maps.InfoWindow({
-    //     content: "Click the map to get Lat/Lng!",
-    //     position: myLatlng,
-    // });
-    // infoWindow.open(map);
-    // // Close the current InfoWindow.
-    // infoWindow.close();
-    // // Create a new InfoWindow.
-    // infoWindow = new google.maps.InfoWindow({
-    //     position: ev.latLng,
-    // });
-    // infoWindow.setContent(
-    //     JSON.stringify(ev.latLng.toJSON(), null, 2)
-    // );
-    // infoWindow.open(map);
-    console.log(ev);
-    console.log('here', ev.latLng.lat[Scopes]);
+    var locationName = prompt("Enter place Name:");
+    const lat = ev.latLng.lat();
+    const lng = ev.latLng.lng();
+    console.log('ev is:', lat);
+    console.log('ev is:', lng);
+    locationService.cachedData(locationName, lat, lng, Date.now())
 }
 
 

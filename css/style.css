@@ -22,5 +22,8 @@
     display: flex;
 }
 .grid{
+    margin: 0 auto;
     display: grid;
+    grid-template-rows: 100px 100px 700px;
+    grid-template-columns: 200px 800px;
 }
