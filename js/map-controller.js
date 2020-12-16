@@ -3,11 +3,9 @@ import { locationService } from './services/location-service.js'
 
 console.log('locationService', locationService);
 
-
 var myLatlng = { lat: 32.0749831, lng: 34.9120554 };
 
 var gGoogleMap;
-
 
 window.onload = () => {
     initMap()
