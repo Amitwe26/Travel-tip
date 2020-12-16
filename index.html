@@ -12,14 +12,14 @@
     <div class="container grid">
         <div class="header flex space-around">
             <h1>TravelTip</h1>
-            <input type="text">
+            <input name="input-txt" type="text">
             <div class="input-btn flex">
-                <button class="btn">Go</button>
-                <button class="">My location</button>
+                <button class="btn-go">Go</button>
+                <button class="my-location-btn">My location</button>
             </div>
         </div>
         <div class="flex space-between align-items">
-            <h2 class="location-click">Location: <span></span></h2>
+            <h2 class="location-click">Location: <span class="user-location-txt"></span></h2>
             <button>copy location</button>
         </div>
         <section class="grid">
@@ -41,7 +41,7 @@
             <div id="map" class="grid" style="width: 100%; height: 400px;"></div>
         </section>
     </div>
-
+    <script src="lib/axios.js"></script>
     <script type="module" src="js/map-controller.js"></script>
 </body>
 

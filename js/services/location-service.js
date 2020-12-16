@@ -6,6 +6,8 @@ export const locationService = {
     getLocations,
     cachedData,
     deleteLocation,
+    getLatLng,
+    getCityLatLng,
     gLocations,
 }
 
@@ -16,9 +18,17 @@ function getLocations() {
     return Promise.resolve(gLocations);
 }
 
+
+function getCityLatLng(addressText) {
+    return axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${addressText}&key=AIzaSyCKuaufnbpG6KWdX28y4gBz43wMxdjEa54`)
+        .then(res => {
+            return res.data
+        });
+}
+
 function cachedData(locationName, lat, lng, created) {
     gLocations.push(createLocation(locationName, lat, lng, created, gId));
-    gId++
+    gId++;
     storageService.saveToStorage(LOCATION_KEY, gLocations);
 }
 
@@ -32,12 +42,17 @@ function createLocation(locationName, lat, lng, created, id) {
     }
 }
 
+function getLatLng(idx) {
+    var location = gLocations.find((row) => row.id === parseInt(idx))
+    return ({ lat: location.lat, lng: location.lng })
+
+}
+
 function deleteLocation(idx) {
-    console.log('idx:', idx);
-    var idxDelete = gLocations.findIndex((location) => {
-        return location.id === idx
-    })
-    gLocations.splice(idxDelete, 1);
+    console.log('gLocations is:', gLocations);
+    var locationIndex = gLocations.findIndex((row) => row.id === parseInt(idx))
+    console.log('idxDelete is:', locationIndex);
+    gLocations.splice(locationIndex, 1);
 }
 
 
