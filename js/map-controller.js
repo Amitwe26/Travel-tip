@@ -7,7 +7,9 @@ var myLatlng = { lat: 32.0749831, lng: 34.9120554 };
 
 var gGoogleMap;
 
+
 window.onload = () => {
+    console.log('its here', locationService.gLocations);
     initMap()
         .then(() => {
             addMarker(myLatlng);
@@ -20,32 +22,36 @@ window.onload = () => {
         .catch(console.log('INIT MAP ERROR'));
 
     getUserPosition()
-        .then(pos => {
-            console.log('User position is:', pos.coords);
-        })
+        .then(pos => { })
         .catch(err => {
             console.log('err!!!', err);
         })
 
     document.querySelector('.btn').addEventListener('click', (ev) => {
-        console.log('Aha!', ev.target);
         panTo(35.6895, 139.6917);
+    })
+    const elBtnDelete = Array.from(document.querySelectorAll('.delete'))
+    console.log('elbtn', elBtnDelete);
+    elBtnDelete.forEach(elBtn => {
+        elBtn.addEventListener('click', ev => {
+            const locationId = ev.target.dataset.id;
+            console.log('loc id', locationId);
+            locationService.deleteLocation(locationId)
+            renderTable(locationService.gLocations)
+        })
     })
 
 }
 
 
 export function initMap(lat = 32.0749831, lng = 34.9120554) {
-    console.log('InitMap');
     return _connectGoogleApi()
         .then(() => {
-            console.log('google available');
             gGoogleMap = new google.maps.Map(
                 document.querySelector('#map'), {
                 center: { lat, lng },
                 zoom: 15
-            })
-            console.log('Map!', gGoogleMap);
+            });
         })
 }
 
@@ -64,7 +70,6 @@ function panTo(lat, lng) {
 }
 
 function getUserPosition() {
-    console.log('Getting Pos');
     return new Promise((resolve, reject) => {
         navigator.geolocation.getCurrentPosition(resolve, reject)
     })
@@ -89,9 +94,23 @@ function onMapClick(ev) {
     var locationName = prompt("Enter place Name:");
     const lat = ev.latLng.lat();
     const lng = ev.latLng.lng();
-    console.log('ev is:', lat);
-    console.log('ev is:', lng);
     locationService.cachedData(locationName, lat, lng, Date.now())
+    locationService.getLocations()
+        .then((locations) => renderTable(locations));
+
+}
+
+function renderTable(locations) {
+    var strHtml = locations.map((location) => {
+        return `<tr>
+       <td>${location.locationName}</td>
+       <td>${location.lat.toFixed(2)}</td>
+       <td>${location.lng.toFixed(2)}</td>
+       <td><button class="btn-render go">Go to location</button></td>
+       <td><button data-id="${location.id}" class="btn-render delete">Delete</button></td>
+       </tr>`
+    })
+    document.querySelector('.table').innerHTML = strHtml.join('');
 }
 
 

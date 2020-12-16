@@ -1,5 +1,5 @@
 
-export const localStorage = {
+export const storageService = {
     loadFromStorage,
     saveToStorage,
 }

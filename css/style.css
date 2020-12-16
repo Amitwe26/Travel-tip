@@ -14,6 +14,15 @@ button:hover{
     color: #ffffff;
     background-color: rgba(0, 0, 0, 0.541);
 }
+button.btn-render{
+    height: 26px;
+}
+button.go{
+    background-color: rgb(37, 236, 53);
+}
+button.delete{
+    background-color: rgb(230, 25, 25);
+}
 input{
     border-radius: 10px;
 }
@@ -30,7 +39,7 @@ input{
     flex-direction: column;
     margin: 30px auto;
     height: 30px;
-    align-items: center
+    align-items: center;
 }
 .input-btn{
     margin-top: 5px;
@@ -48,15 +57,16 @@ section{
 
 }
 .left-top{
-    background-color: red;
+    border: 1px solid rgb(228, 48, 78);
     grid-area: leftT;
     border-radius: 20px;
 
 }
 .left-bot{
     grid-area: leftB;
-    background-color: rgb(241, 147, 147);
+    border: 1px solid rgb(246, 255, 192);
     border-radius: 20px;
+    padding: 1rem;
 
 }
 #map{
@@ -80,8 +90,5 @@ section{
     align-items: center;
 }
 .grid{
-    margin: 0 auto;
     display: grid;
-    grid-template-rows: 100px 100px 700px;
-    grid-template-columns: 200px 800px;
 }
