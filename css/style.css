@@ -1,31 +1,68 @@
 *{
     box-sizing: border-box;
 }
-
+body{
+    background-color: rgba(0, 0, 0, 0.541);
+}
+button{
+    height: 30px;
+    font-size: medium;
+    border-radius: 20px;
+    cursor: pointer
+}
+button:hover{
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.541);
+}
+input{
+    border-radius: 10px;
+}
 .container{
-    margin: 0 auto;
-    max-width: 70vw;
+    margin: 6em auto;
+    max-width: 85vw;
+    height: 80vh;
+    background-color: rgba(223, 219, 219, 0.733);
+    border-radius: 20px;
+    padding: 0.35em;
     
 }
 .header{
-    margin: 20px auto;
+    flex-direction: column;
+    margin: 30px auto;
     height: 30px;
     align-items: center
 }
-/* .section{
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(4,100px);
-    grid-template-areas: 
-    "left left map map"
+.input-btn{
+    margin-top: 5px;
 }
-.left{
-    display: grid;
-   grid-area: left;
+.location-click{
+    background-color: burlywood;
+}
+section{
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2,200px);
+    grid-template-areas: 
+    "leftT  map"
+    "leftB  map";
+    grid-gap: 5px;
+
+}
+.left-top{
+    background-color: red;
+    grid-area: leftT;
+    border-radius: 20px;
+
+}
+.left-bot{
+    grid-area: leftB;
+    background-color: rgb(241, 147, 147);
+    border-radius: 20px;
+
 }
 #map{
-    margin: 0 auto;
     grid-area: map;
-} */
+    border-radius: 20px;
+}
 
 
 /* HELPER*/
@@ -35,6 +72,12 @@
 }
 .space-around{
     justify-content: space-around;
+}
+.space-between{
+    justify-content: space-between;
+}
+.align-items {
+    align-items: center;
 }
 .grid{
     margin: 0 auto;
