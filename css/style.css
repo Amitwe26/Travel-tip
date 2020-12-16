@@ -4,22 +4,37 @@
 
 .container{
     margin: 0 auto;
-    max-width: 50vw;
+    max-width: 70vw;
+    
 }
 .header{
     margin: 20px auto;
     height: 30px;
     align-items: center
 }
+/* .section{
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4,100px);
+    grid-template-areas: 
+    "left left map map"
+}
+.left{
+    display: grid;
+   grid-area: left;
+}
 #map{
     margin: 0 auto;
-}
+    grid-area: map;
+} */
 
 
 /* HELPER*/
 
 .flex{
     display: flex;
+}
+.space-around{
+    justify-content: space-around;
 }
 .grid{
     display: grid;
