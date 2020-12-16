@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Travel-map</title>
+</head>
+
+<body>
+    <div class="container grid">
+        <div class="header flex">
+            <h1>TravelTip</h1>
+            <input type="text">
+            <button class="btn">Go</button>
+            <button class="btn">My location</button>
+            <p></p>
+            <button>copy location</button>
+        </div>
+        <div id="map" style="width: 80%; height: 400px;"></div>
+        <!-- <button class="btn">Click Me</button> -->
+    </div>
+
+    <script type="module" src="js/map-controller.js"></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKuaufnbpG6KWdX28y4gBz43wMxdjEa54&callback=mapReady"></script>
+</body>
+
+</html>

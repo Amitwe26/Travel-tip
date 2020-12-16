@@ -1,0 +1,26 @@
+*{
+    box-sizing: border-box;
+}
+
+.container{
+    margin: 0 auto;
+    max-width: 50vw;
+}
+.header{
+    margin: 20px auto;
+    height: 30px;
+    align-items: center
+}
+#map{
+    margin: 0 auto;
+}
+
+
+/* HELPER*/
+
+.flex{
+    display: flex;
+}
+.grid{
+    display: grid;
+}
